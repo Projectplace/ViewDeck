@@ -1246,7 +1246,6 @@ static NSTimeInterval durationToAnimate(CGFloat pointsToAnimate, CGFloat velocit
 
 - (void)notifyWillOpenSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated {
     if (viewDeckSide == IIViewDeckNoSide) return;
-    [self notifyAppearanceForSide:viewDeckSide animated:animated from:0 to:1];
 
     if ([self isSideClosed:viewDeckSide]) {
         [self performDelegate:@selector(viewDeckController:willOpenViewSide:animated:) side:viewDeckSide animated:animated];
@@ -1255,7 +1254,6 @@ static NSTimeInterval durationToAnimate(CGFloat pointsToAnimate, CGFloat velocit
 
 - (void)notifyDidOpenSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated {
     if (viewDeckSide == IIViewDeckNoSide) return;
-    [self notifyAppearanceForSide:viewDeckSide animated:animated from:1 to:2];
 
     if ([self isSideOpen:viewDeckSide]) {
         [self performDelegate:@selector(viewDeckController:didOpenViewSide:animated:) side:viewDeckSide animated:animated];
@@ -1264,7 +1262,6 @@ static NSTimeInterval durationToAnimate(CGFloat pointsToAnimate, CGFloat velocit
 
 - (void)notifyWillCloseSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated {
     if (viewDeckSide == IIViewDeckNoSide) return;
-    [self notifyAppearanceForSide:viewDeckSide animated:animated from:2 to:1];
 
     if (![self isSideClosed:viewDeckSide]) {
         [self performDelegate:@selector(viewDeckController:willCloseViewSide:animated:) side:viewDeckSide animated:animated];
@@ -1274,7 +1271,6 @@ static NSTimeInterval durationToAnimate(CGFloat pointsToAnimate, CGFloat velocit
 - (void)notifyDidCloseSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated {
     if (viewDeckSide == IIViewDeckNoSide) return;
 
-    [self notifyAppearanceForSide:viewDeckSide animated:animated from:1 to:0];
     if ([self isSideClosed:viewDeckSide]) {
         [self performDelegate:@selector(viewDeckController:didCloseViewSide:animated:) side:viewDeckSide animated:animated];
         [self performDelegate:@selector(viewDeckController:didShowCenterViewFromSide:animated:) side:viewDeckSide animated:animated];
